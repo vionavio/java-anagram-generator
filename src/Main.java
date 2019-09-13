@@ -9,7 +9,6 @@ public class Main {
     private static ArrayList<ShuffleWord> shuffleWordArrayList = new ArrayList<>();
     private static ArrayList<String> shuffledWords = new ArrayList<>();
     private static ArrayList<ArrayList<Boolean>> possibilities = new ArrayList<ArrayList<Boolean>>();
-    private static LinkedHashSet<String> uniqueShuffledWords = new LinkedHashSet<>();
 
     public static void main(String[] args) {
         prepare();
@@ -91,7 +90,7 @@ public class Main {
     }
 
     private static void removeDuplicates() {
-        uniqueShuffledWords = new LinkedHashSet<>(shuffledWords);
+        LinkedHashSet<String> uniqueShuffledWords = new LinkedHashSet<>(shuffledWords);
         System.out.println(shuffledWords);
         System.out.println(shuffledWords.size());
         System.out.println(uniqueShuffledWords);
