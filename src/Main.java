@@ -1,5 +1,6 @@
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashSet;
 
 public class Main {
     private static String mainWord = "mahru";
@@ -8,6 +9,7 @@ public class Main {
     private static ArrayList<ShuffleWord> shuffleWordArrayList = new ArrayList<>();
     private static ArrayList<String> shuffledWords = new ArrayList<>();
     private static ArrayList<ArrayList<Boolean>> possibilities = new ArrayList<ArrayList<Boolean>>();
+    private static LinkedHashSet<String> uniqueShuffledWords = new LinkedHashSet<>();
 
     public static void main(String[] args) {
         prepare();
@@ -21,12 +23,11 @@ public class Main {
             }
         }
         generatePossibilities();
-        System.out.println(shuffleWordArrayList);
+//        System.out.println(shuffleWordArrayList);
         generateShuffleWords();
 //        System.out.println(shuffleWordArrayList.size());
 //        System.out.println(possibilities);
-        System.out.println(shuffledWords);
-        System.out.println(shuffledWords.size());
+        removeDuplicates();
     }
 
     private static void prepare() {
@@ -87,5 +88,13 @@ public class Main {
                 }
             }
         }
+    }
+
+    private static void removeDuplicates() {
+        uniqueShuffledWords = new LinkedHashSet<>(shuffledWords);
+        System.out.println(shuffledWords);
+        System.out.println(shuffledWords.size());
+        System.out.println(uniqueShuffledWords);
+        System.out.println(uniqueShuffledWords.size());
     }
 }
