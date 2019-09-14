@@ -1,0 +1,65 @@
+
+
+a e 
+u n
+n m
+m w
+b p d q
+
+rnmah => rumah
+
+cari di anagram
+jika tidak ketemu
+cari di jaro winkler
+
+rnmah => rumah
+
+id | similar
+1  | [n, u]
+2  | [m, w]
+3  | [b, p, d, q]
+
+rnwah => rumah
+rnawh => rnwah
+
+
+rnwah
+ruwah
+rumah
+
+loop
+  "rnwah"
+  r
+  n > "rnwah", "ruwah"
+    w > "rnnah", "rnmah", "rnwah"
+
+    "rnwah" 
+      w > "rnnah", "rnmah", "rnwah"
+    "ruwah"
+      w > "runah", "rumah", "ruwah"
+
+
+  w > "rnnah", "rnmah", "rnwah"
+    n > "rnwah", "ruwah"
+  a
+  h
+end 
+
+di dalam loop, cari anagram
+
+["ruwah", "ruwah", "rumah"] => ["ruwah", "rumah"]
+
+cari di kamus
+anagram
+buat kata untuk anagram
+anagram tidak ketemu
+jaro winkler
+
+
+fungsi untuk membuat kata acak berdasarkan index dan similar key
+
+param 1: indeks dari 'rumah' > 0 - 4
+param 2: array dari similar
+
+output: kata yang dihasilkan
+
