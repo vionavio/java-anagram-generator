@@ -1,9 +1,21 @@
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedHashSet;
+import java.util.List;
 
 public class Main {
     private static String mainWord = "mahru";
+
+    // ArrayList = []
+    // List      = []
+    // String    = "ini string"
+    // List<String> = ["ini string", "ini string lagi"]
+    // ArrayList<String> = [ "mahru", "mahrn", "sdlfk" ]
+    // Similar = { letterKey: "a", letterMask: "e" }
+    // ArrayList<Similar> = [ { letterKey: "a", letterMask: "e" }, { letterKey: "m", letterMask: "w" } ]
+    // ArrayList<ShuffleWord> = [ {}, {} ]
+
+
     private static ArrayList<Similiar> similarList = new ArrayList<>();
     private static ArrayList<Character> similarKeys = new ArrayList<>();
     private static ArrayList<ShuffleWord> shuffleWordArrayList = new ArrayList<>();
@@ -11,6 +23,7 @@ public class Main {
     private static ArrayList<ArrayList<Boolean>> possibilities = new ArrayList<ArrayList<Boolean>>();
 
     public static void main(String[] args) {
+
         prepare();
         for (int i = 0; i < mainWord.length(); i++) {
             if (similarKeys.contains(mainWord.charAt(i))) {
@@ -38,6 +51,8 @@ public class Main {
         for (Similiar similiar : similarList) {
             similarKeys.add(similiar.getLetterKey());
         }
+
+        shuffledWords.add(mainWord);
     }
 
     private static Character getMaskCharacterFromSimilar(Character character) {
@@ -71,12 +86,17 @@ public class Main {
     }
 
     private static void generateShuffleWords() {
-        for (ArrayList<Boolean> possibilityList: possibilities) {
+        //  [false, false, false]  [[...], [...], [...]]
+        for (ArrayList<Boolean> possibilityList : possibilities) {
             StringBuilder newWord = new StringBuilder(mainWord);
             Iterator<Boolean> possibilityIterator = possibilityList.iterator();
             Iterator<ShuffleWord> shuffleWordIterator = shuffleWordArrayList.iterator();
 
             while (possibilityIterator.hasNext() && shuffleWordIterator.hasNext()) {
+
+                // false
+                // {index: 0, key: 'm', mask: 'w'}
+
                 Boolean isMask = possibilityIterator.next();
                 ShuffleWord shuffleWord = shuffleWordIterator.next();
 
@@ -84,6 +104,7 @@ public class Main {
                     newWord.setCharAt(shuffleWord.getIndex(), shuffleWord.getLetter_mask());
 //                    newWord.indexOf(shuffleWord.getIndex()) = shuffleWord.getLetter_mask();
                     shuffledWords.add(String.valueOf(newWord));
+                    System.out.println(shuffledWords);
                 }
             }
         }
@@ -91,8 +112,8 @@ public class Main {
 
     private static void removeDuplicates() {
         LinkedHashSet<String> uniqueShuffledWords = new LinkedHashSet<>(shuffledWords);
-        System.out.println(shuffledWords);
-        System.out.println(shuffledWords.size());
+//        System.out.println(shuffledWords);
+//        System.out.println(shuffledWords.size());
         System.out.println(uniqueShuffledWords);
         System.out.println(uniqueShuffledWords.size());
     }
