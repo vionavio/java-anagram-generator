@@ -52,7 +52,6 @@ public class Main {
             similarKeys.add(similiar.getLetterKey());
         }
 
-        shuffledWords.add(mainWord);
     }
 
     private static Character getMaskCharacterFromSimilar(Character character) {
@@ -102,19 +101,17 @@ public class Main {
 
                 if (isMask) {
                     newWord.setCharAt(shuffleWord.getIndex(), shuffleWord.getLetter_mask());
-//                    newWord.indexOf(shuffleWord.getIndex()) = shuffleWord.getLetter_mask();
-                    shuffledWords.add(String.valueOf(newWord));
-                    System.out.println(shuffledWords);
                 }
             }
+            shuffledWords.add(String.valueOf(newWord));
+//            System.out.println(shuffledWords);
         }
     }
 
     private static void removeDuplicates() {
-        LinkedHashSet<String> uniqueShuffledWords = new LinkedHashSet<>(shuffledWords);
-//        System.out.println(shuffledWords);
-//        System.out.println(shuffledWords.size());
-        System.out.println(uniqueShuffledWords);
-        System.out.println(uniqueShuffledWords.size());
+        System.out.println(shuffledWords);
+        System.out.println(shuffledWords.size());
+//        System.out.println(uniqueShuffledWords);
+//        System.out.println(uniqueShuffledWords.size());
     }
 }
