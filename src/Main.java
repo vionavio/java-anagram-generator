@@ -111,6 +111,7 @@ public class Main {
     private static void removeDuplicates() {
         System.out.println(shuffledWords);
         System.out.println(shuffledWords.size());
+        Hello
 //        System.out.println(uniqueShuffledWords);
 //        System.out.println(uniqueShuffledWords.size());
     }
